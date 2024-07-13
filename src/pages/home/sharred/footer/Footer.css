@@ -1,0 +1,24 @@
+.footer {
+  background-color: #001529;
+  color: #ffffff;
+  padding: 24px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.footer-section {
+  margin-bottom: 16px;
+}
+
+.footer-section a {
+  color: #ffffff;
+}
+
+.footer-section a:hover {
+  color: #ffa940;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 24px;
+}

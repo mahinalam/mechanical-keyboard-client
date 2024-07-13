@@ -1,0 +1,36 @@
+* Styles for the modal */ .ant-modal-body {
+  padding: 24px;
+}
+
+/* Styles for form inputs */
+.ant-form-item-label {
+  text-align: left;
+}
+
+.ant-input,
+.ant-input-number {
+  width: 100%;
+}
+
+/* Styles for the table */
+.ant-table-wrapper {
+  margin-top: 24px;
+}
+
+/* Styles for buttons */
+.ant-btn-primary {
+  margin-right: 12px;
+}
+
+.ant-btn-link {
+  padding: 0;
+}
+
+/* Styles for delete confirmation modal */
+.ant-modal-content {
+  max-width: 400px;
+}
+
+.ant-modal-body p {
+  margin-bottom: 0;
+}

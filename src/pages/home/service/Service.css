@@ -1,0 +1,30 @@
+.service-advertisement-section {
+  padding: 50px 30px;
+  background-color: #f0f2f5;
+  text-align: center;
+}
+
+.section-title {
+  margin-bottom: 40px;
+}
+
+.service-item {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.service-title {
+  margin-bottom: 20px;
+}
+
+.check-icon {
+  color: #52c41a; /* Green color for check icon */
+}
+
+@media (max-width: 768px) {
+  .service-item {
+    margin-bottom: 20px;
+  }
+}
