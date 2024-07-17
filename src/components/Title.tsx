@@ -9,7 +9,7 @@ const Title = ({ title, subTitle }: TitleProps) => {
   return (
     <div className="flex flex-col justify-center my-[40px] sm:my-[60px] md:my-20 items-center">
       <div>
-        <p className="font-bold text-[30px]">{title}</p>
+        <p className="font-medium text-[30px]">{title}</p>
       </div>
       <div>
         <p>{subTitle}</p>

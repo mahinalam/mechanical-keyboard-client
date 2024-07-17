@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useState, useEffect } from "react";
 import {
   Dialog,
   DialogContent,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
   DialogClose,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
@@ -15,9 +15,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { useUpdateProductMutation } from "@/redux/api/baseApi";
 import { message } from "antd";
 
-const UpdateProductModal = ({ open, onClose, product }) => {
-  const [updateProduct, { isLoading, isError, data }] =
-    useUpdateProductMutation();
+const UpdateProductModal = ({ open, onClose, product }: any) => {
+  const [updateProduct] = useUpdateProductMutation();
 
   const [formData, setFormData] = useState({
     image: "",
@@ -43,14 +42,14 @@ const UpdateProductModal = ({ open, onClose, product }) => {
     }
   }, [product]);
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
       const data = await updateProduct({
@@ -65,8 +64,6 @@ const UpdateProductModal = ({ open, onClose, product }) => {
       message.error("Failed to update product!");
     }
   };
-
-  console.log(data, formData);
 
   return (
     <Dialog open={open} onOpenChange={onClose}>

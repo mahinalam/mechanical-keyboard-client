@@ -1,15 +1,10 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import MainLayout from "./components/layout/MainLayout";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
-      <div className="mx-20 mt-[50px]">
+      <div className="mx-[20px] sm:mx-[30px] md:mx-[40px] mt-[50px]">
         <MainLayout />
       </div>
     </>

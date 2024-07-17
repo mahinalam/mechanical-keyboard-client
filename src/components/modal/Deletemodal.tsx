@@ -1,22 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
   DialogClose,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { useRemoveProductMutation } from "../../../src/redux/api/baseApi";
-import { useAppDispatch } from "../../redux/hooks";
 import { message } from "antd";
 import { useNavigate } from "react-router-dom";
-export const DeleteModal = ({ open, onClose, productId }) => {
-  const dispatch = useAppDispatch();
-  const [removeProduct, { data, isLoading }] = useRemoveProductMutation();
+export const DeleteModal = ({ open, onClose, productId }: any) => {
+  const [removeProduct] = useRemoveProductMutation();
   const navigate = useNavigate();
   const handleDeleteProduct = async () => {
     try {

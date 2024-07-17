@@ -1,121 +1,4 @@
-// import { Input } from "@/components/ui/input";
-// import { Label } from "@/components/ui/label";
-// import CheckoutInput from "./CheckoutInput";
-
-// const Checkout = () => {
-//   return (
-//     <div className="my-20">
-//       <div>
-//         <h2 className="text-[30px] font-medium mt-16 mb-10">Checkout</h2>
-//         <div>
-//           <h2 className="text-[16px] my-2 font-bold uppercase">
-//             1.Billing Information
-//           </h2>
-//         </div>
-//         <CheckoutInput
-//           id="name"
-//           label="name"
-//           placeholder="Name"
-//           type="text"
-//           title="Name"
-//         />
-//         <CheckoutInput
-//           id="email"
-//           label="email"
-//           placeholder="Email"
-//           type="email"
-//           title="Email"
-//         />
-//         <div className="grid grid-cols-2 gap-4">
-//           <CheckoutInput
-//             id="city"
-//             label="city"
-//             placeholder="City"
-//             type="text"
-//             title="City"
-//           />
-//           <CheckoutInput
-//             id="zip-code"
-//             label="zip-code"
-//             placeholder="Zip Code"
-//             type="text"
-//             title="Zip Code"
-//           />
-//         </div>
-//       </div>
-//       <div>
-//         <div>
-//           <h2 className="text-[16px] my-2 font-bold uppercase">
-//             2.Shipping Information
-//           </h2>
-//         </div>
-//         <CheckoutInput
-//           id="name"
-//           label="name"
-//           placeholder="Name"
-//           type="text"
-//           title="Name"
-//         />
-//         <CheckoutInput
-//           id="email"
-//           label="email"
-//           placeholder="Email"
-//           type="email"
-//           title="Email"
-//         />
-//         <div className="grid grid-cols-2 gap-4">
-//           <CheckoutInput
-//             id="city"
-//             label="city"
-//             placeholder="City"
-//             type="text"
-//             title="City"
-//           />
-//           <CheckoutInput
-//             id="zip-code"
-//             label="zip-code"
-//             placeholder="Zip Code"
-//             type="text"
-//             title="Zip Code"
-//           />
-//         </div>
-//       </div>
-//       <div>
-//         <div>
-//           <h2 className="text-[16px] my-2 font-bold uppercase">
-//             3.Payment Information
-//           </h2>
-//         </div>
-//         <CheckoutInput
-//           id="card"
-//           label="card"
-//           placeholder="0000-0000-0000-0000"
-//           type="text"
-//           title="Credit Card Number"
-//         />
-
-//         <div className="grid grid-cols-2 gap-4">
-//           <CheckoutInput
-//             id="expiration-date"
-//             label="expiration-date"
-//             placeholder="MM/YY"
-//             type="date"
-//             title="Expiration Date"
-//           />
-//           <CheckoutInput
-//             id="cvc"
-//             label="cvc"
-//             placeholder="CVC"
-//             type="text"
-//             title="CVC"
-//           />
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Checkout;
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import React, { useState } from "react";
 import {
@@ -128,7 +11,7 @@ import {
   Col,
   message,
 } from "antd";
-import { useAppSelector, useAppDispatch } from "@/redux/hooks";
+import { useAppDispatch } from "@/redux/hooks";
 import { clearCart } from "@/redux/features/cart/cartSlice";
 import { useNavigate } from "react-router-dom"; // Updated to use useNavigate
 
@@ -137,7 +20,6 @@ const { Title } = Typography;
 const Checkout = () => {
   const [form] = Form.useForm();
   const [paymentMethod, setPaymentMethod] = useState("cod");
-  const cart = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
   const navigate = useNavigate(); // Updated to use useNavigate
 
@@ -149,9 +31,15 @@ const Checkout = () => {
     form
       .validateFields()
       .then((values) => {
+        console.log(values);
+        // const updatedQuantity = {
+        //   id:
+        // }
+
         if (paymentMethod === "cod") {
           // Handle Cash on Delivery logic
           dispatch(clearCart());
+
           message.success("Order placed successfully!");
           navigate("/success");
         } else if (paymentMethod === "stripe") {
@@ -166,6 +54,7 @@ const Checkout = () => {
       })
       .catch((info) => {
         console.log("Validate Failed:", info);
+        message.error("Failed to create Order!");
       });
   };
 

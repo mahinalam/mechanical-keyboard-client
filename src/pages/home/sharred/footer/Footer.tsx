@@ -7,7 +7,7 @@ const { Link, Text } = Typography;
 
 const ResponsiveFooter: React.FC = () => {
   return (
-    <div className="mx-[20px] sm:mx-[30px] md:mx-[40px]">
+    <div className=" w-full mt-[40px] sm:mt-[60px] md:mt-[80px]">
       <Footer className="footer">
         <Row justify="center">
           <Col xs={24} sm={12} md={8} lg={6} xl={4}>

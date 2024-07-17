@@ -1,5 +1,5 @@
 import React from "react";
-import HeroSection from "./hero/Hero";
+import Hero from "./hero/Hero";
 import ServiceAdvertisement from "./service/Service";
 import Title from "@/components/Title";
 import FeaturedProducts from "./featuredProducts/FeaturedProducts";
@@ -9,7 +9,7 @@ import Review from "./Review";
 const Home = () => {
   return (
     <div>
-      <HeroSection></HeroSection>
+      <Hero></Hero>
       <ServiceAdvertisement />
       <Title title="New arrival" subTitle="Shop now" />
       <FeaturedProducts />

@@ -3,10 +3,12 @@ import React from "react";
 import Cart from "./Cart";
 import { IProductState } from "@/redux/features/products/productsSlice";
 import { Link } from "react-router-dom";
+// import { Button } from "@/components/ui/button";
 import { Button } from "antd";
 
 const FeaturedProducts = () => {
   const { data: products, isLoading } = useGetProductsQuery(undefined);
+  // console.log(data);
   console.log(products);
   if (isLoading) {
     return <p>Loading</p>;
@@ -24,9 +26,7 @@ const FeaturedProducts = () => {
       </div>
       <Link to="/products">
         <p className="text-center mt-[30px] sm:mt-[40px] md:mt-[50px]">
-          <Button type="primary" size="large">
-            See More
-          </Button>
+          <Button type="primary">See More</Button>
         </p>
       </Link>
     </div>

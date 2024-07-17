@@ -160,6 +160,15 @@ export interface CartItem {
   image: string;
   description: string;
 }
+// const cartItem = {
+//   id: "",
+//   title: "",
+//   price: 0,
+//   quantity: 0,
+//   availableQuantity: 0,
+//   image: "",
+//   description: "",
+// };
 
 interface CartState {
   items: CartItem[];

@@ -1,4 +1,3 @@
-import React from "react";
 import ResponsiveNavbar from "../../pages/home/sharred/navbar/Navbar";
 import ResponsiveFooter from "../../pages/home/sharred/footer/Footer";
 import { Outlet } from "react-router-dom";

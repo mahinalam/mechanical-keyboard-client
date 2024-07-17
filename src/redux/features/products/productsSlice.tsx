@@ -1,6 +1,3 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-
 export interface IProductState {
   _id: string;
   title: string;

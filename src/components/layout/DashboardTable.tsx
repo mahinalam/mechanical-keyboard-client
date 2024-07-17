@@ -1,20 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import {
-  selectKeyboards,
-  useAddProductMutation,
-  useGetProductsQuery,
-  useRemoveProductMutation,
-  useUpdateProductMutation,
-} from "@/redux/api/baseApi";
+import { useGetProductsQuery } from "@/redux/api/baseApi";
 import { DeleteModal } from "../modal/Deletemodal";
 import { useState } from "react";
 import { Button } from "antd";
@@ -23,7 +16,7 @@ import UpdateProductModal from "../modal/UpdateProductModal";
 
 // delete product
 const DashboardTable = () => {
-  const { data, isLoading } = useGetProductsQuery(undefined);
+  const { data } = useGetProductsQuery(undefined);
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isUpdatedModalOpen, setIsUpdatedModalOpen] = useState(false);
@@ -31,14 +24,8 @@ const DashboardTable = () => {
   const [id, setId] = useState("");
   console.log("data", data);
   console.log("id", id);
-  // const handleDeleteProduct = (id: string) => {
-  //   console.log("clikked");
-  // setIsOpen(true)
-  // };
 
-  // update product
-
-  const updateModalOpen = (product) => {
+  const updateModalOpen = (product: any) => {
     console.log("product", product);
     setSelectUpdatedProduct(product);
     setIsUpdatedModalOpen(true);
@@ -55,7 +42,7 @@ const DashboardTable = () => {
 
   return (
     <>
-      <div>
+      <div className="w-full">
         <Button onClick={handleAddProductClick} type="primary" size="large">
           Add Product
         </Button>
@@ -72,7 +59,7 @@ const DashboardTable = () => {
           </TableHeader>
           <TableBody>
             {data?.data?.length > 0 &&
-              data?.data?.map((product) => (
+              data?.data?.map((product: any) => (
                 <TableRow key={product?._id}>
                   <TableCell className="font-medium">
                     {product?.title}

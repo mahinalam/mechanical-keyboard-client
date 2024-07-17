@@ -59,7 +59,10 @@ const About: React.FC = () => {
           <Divider />
 
           <Title level={2}>Meet Our Team</Title>
-          <Row gutter={[16, 16]}>
+          <Row
+            className="md:my-[80px] sm:my-[60px] my-[40px]"
+            gutter={[16, 16]}
+          >
             {teamMembers.map((member, index) => (
               <Col xs={24} sm={12} md={8} key={index}>
                 <Card

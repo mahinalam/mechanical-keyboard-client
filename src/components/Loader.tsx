@@ -7,6 +7,7 @@ const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 const Loader: React.FC = () => {
   return (
     <div
+      className="text-blue-900"
       style={{
         display: "flex",
         justifyContent: "center",

@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Row, Col } from "antd";
+import { Card } from "antd";
 import { Link } from "react-router-dom";
 
 const brands = [
@@ -31,39 +31,28 @@ const brands = [
     logo: "https://i.ibb.co/m9Fs5w5/brand7.png",
     title: "ErgoKey",
   },
-  // {
-  //   logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Mechanical_Keyboard_Logo_5.svg/1280px-Mechanical_Keyboard_Logo_5.svg.png",
-  //   title: "BudgetKey",
-  // },
-  // {
-  //   logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Mechanical_Keyboard_Logo_6.svg/1280px-Mechanical_Keyboard_Logo_6.svg.png",
-  //   title: "ProKey",
-  // },
-  // {
-  //   logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Mechanical_Keyboard_Logo_7.svg/1280px-Mechanical_Keyboard_Logo_7.svg.png",
-  //   title: "CustomKey",
-  // },
 ];
 
 const FeaturedBrands: React.FC = () => {
   return (
     <div
-      className="featured-brands md:mb-20 sm:mb-[60px] mb-[40px]"
-      style={{ padding: "20px", backgroundColor: "#f9f9f9" }}
+      className="featured-brands md:mb-20 sm:mb-[60px] mb-[40px] bg-white"
+      style={{ padding: "20px", backgroundColor: "" }}
     >
       <h2
         style={{
           textAlign: "center",
           marginBottom: "30px",
           fontSize: "24px",
-          fontWeight: "medium",
+          fontWeight: 600,
         }}
       >
         Top Brands
       </h2>
-      <Row gutter={[16, 16]} justify="center">
-        {brands.slice(0, 6).map((brand, index) => (
-          <Col key={index} xs={24} sm={12} md={8} lg={6} xl={4}>
+
+      <div className="grid md:grid-cols-6 gap-4 sm:grid-cols-3 grid-cols-3 ">
+        {brands?.length > 0 &&
+          brands.slice(0, 6).map((brand) => (
             <Link to="/products">
               <Card
                 hoverable
@@ -83,9 +72,8 @@ const FeaturedBrands: React.FC = () => {
                 <Card.Meta title={brand.title} />
               </Card>
             </Link>
-          </Col>
-        ))}
-      </Row>
+          ))}
+      </div>
     </div>
   );
 };

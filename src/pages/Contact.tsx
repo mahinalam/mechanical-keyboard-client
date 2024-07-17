@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Import necessary modules and Ant Design components
 import React from "react";
 import { Form, Input, Button, Row, Col, message } from "antd";
@@ -21,7 +22,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <div className="contact-us-page">
+    <div className="contact-us-page my-[40px] sm:my-[60px] md:my-[80px]">
       <Row justify="center">
         <Col xs={24} sm={20} md={16} lg={12}>
           <div className="contact-form-container">

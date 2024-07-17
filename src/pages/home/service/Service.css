@@ -1,11 +1,11 @@
 .service-advertisement-section {
   padding: 50px 30px;
-  background-color: #f0f2f5;
+  /* background-color: #f0f2f5; */
   text-align: center;
 }
 
 .section-title {
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 
 .service-item {

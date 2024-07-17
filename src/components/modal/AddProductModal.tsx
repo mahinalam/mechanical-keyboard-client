@@ -1,24 +1,23 @@
-import React, { useState } from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import {
   Dialog,
   DialogContent,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
   DialogClose,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { useAppDispatch } from "@/redux/hooks";
 import { useAddProductMutation } from "@/redux/api/baseApi";
 import { message } from "antd";
+import { useState } from "react";
 
-const AddProductModal = ({ open, onClose }) => {
-  const dispatch = useAppDispatch();
-  const [addProduct, { data, isLoading, isError }] = useAddProductMutation();
+const AddProductModal = ({ open, onClose }: any) => {
+  const [addProduct] = useAddProductMutation();
 
   const [formData, setFormData] = useState({
     image: "",
@@ -30,14 +29,14 @@ const AddProductModal = ({ open, onClose }) => {
     availableQuantity: 0,
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     // Add logic to submit the form data to your backend or state management
     try {

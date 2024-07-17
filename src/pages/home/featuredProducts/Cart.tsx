@@ -1,124 +1,61 @@
-// import * as React from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
-// import { Button } from "@/components/ui/button";
-// import {
-//   Card,
-//   CardContent,
-//   CardDescription,
-//   CardFooter,
-//   CardHeader,
-//   CardTitle,
-// } from "@/components/ui/card";
-// import { Input } from "@/components/ui/input";
-// import { Label } from "@/components/ui/label";
-// import {
-//   Select,
-//   SelectContent,
-//   SelectItem,
-//   SelectTrigger,
-//   SelectValue,
-// } from "@/components/ui/select";
+import { Card } from "antd";
+import RcRate from "rc-rate";
+import "rc-rate/assets/index.css";
 
-type TProduct = {
-  product: IProductState;
-};
+const { Meta } = Card;
 
-// const Cart = function CardWithForm({ product }: TProduct) {
-//   console.log("products", product);
-//   return (
-//     <Card className="w-[350px]">
-//       <CardHeader>
-//         <img
-//           src={product.image}
-//           alt="Product"
-//           className="w-full h-auto object-cover rounded-t-lg"
-//         />
-//         <CardTitle>{product.title}</CardTitle>
-//         <CardDescription>Deploy your new project in one-click.</CardDescription>
-//       </CardHeader>
-//       <CardContent>
-//         <form>
-//           <div className="grid w-full items-center gap-4">
-//             <div className="flex flex-col space-y-1.5">
-//               <Label htmlFor="name">Name</Label>
-//               <Input id="name" placeholder="Name of your project" />
-//             </div>
-//             <div className="flex flex-col space-y-1.5">
-//               <Label htmlFor="framework">Framework</Label>
-//               <Select>
-//                 <SelectTrigger id="framework">
-//                   <SelectValue placeholder="Select" />
-//                 </SelectTrigger>
-//                 <SelectContent position="popper">
-//                   <SelectItem value="next">Next.js</SelectItem>
-//                   <SelectItem value="sveltekit">SvelteKit</SelectItem>
-//                   <SelectItem value="astro">Astro</SelectItem>
-//                   <SelectItem value="nuxt">Nuxt.js</SelectItem>
-//                 </SelectContent>
-//               </Select>
-//             </div>
-//           </div>
-//         </form>
-//       </CardContent>
-//       <CardFooter className="flex justify-between">
-//         <Button variant="outline">Cancel</Button>
-//         <Button>Deploy</Button>
-//       </CardFooter>
-//     </Card>
-//   );
-// };
-
-// export default Cart;
-
-import * as React from "react";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { IProductState } from "@/redux/features/products/productsSlice";
-import { useGetUserCartQuery } from "@/redux/api/baseApi";
-// import { Rate } from "@/components/ui/rate"
-
-const Cart = ({ product }: TProduct) => {
-  const { data, isLoading } = useGetUserCartQuery(undefined);
-  // console.log("carts", data);
+const Cart = ({ product }: any) => {
   return (
-    <Card className="w-[350px] group">
-      <CardHeader>
-        <div className="object-cover">
+    <Card
+      hoverable
+      className="product-card p-4  border-1 border-black border-opacity-10"
+      cover={
+        <div className="product-card-image-container">
           <img
-            src={product.image}
             alt={product.title}
-            className="w-[full] h-[full]  rounded-t-lg mb-5 group-hover:scale-110"
+            src={product.image}
+            className="product-card-image w-full h-full "
           />
         </div>
-        <CardTitle>{product.title}</CardTitle>
-        <CardDescription>Brand: {product.brand}</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="grid w-full items-center gap-4">
-          <div className="flex flex-col space-y-1.5">
-            <p className="text-gray-700">
-              Available Quantity: {product.quantity}
+      }
+      // actions={
+      //   [
+      //     // <Link
+      //     //   to={`/products/${product._id}`}
+      //     //   style={{ margin: 0 }}
+      //     //   className="bg-[#F7F7F7]"
+      //     // ></Link>,
+      //   ]
+      // }
+    >
+      <Meta
+        className="text-center"
+        title={
+          <span className="product-card-title text-[18px] font-semibold uppercase">
+            {product.title}
+          </span>
+        }
+        description={
+          <div className="product-card-description text-[15px]">
+            <p className="text-opacity-80 text-black">Brand: {product.brand}</p>
+            <p className=" text-black text-opacity-80">
+              Available Quantity:
+              <span className="font-semibold">{product.availableQuantity}</span>
             </p>
-            <p className="text-gray-700">Price: ${product.price.toFixed(2)}</p>
-            <div className="flex items-center">
-              {/* <Rate value={product.rating} disabled /> */}
-              <span className="ml-2 text-gray-600">
-                {product.rating.toFixed(1)}
-              </span>
-            </div>
+            <p className="product-card-price  text-black text-opacity-80">
+              Price:
+              <span className="font-bold text-md"> ${product.price}</span>
+            </p>
+            <p className="text-black text-opacity-80">
+              <div>
+                <RcRate allowHalf defaultValue={product.rating} disabled />
+              </div>
+            </p>
           </div>
-        </div>
-      </CardContent>
-      <CardFooter className="flex justify-between">
-        <Button variant="outline">See Details</Button>
-      </CardFooter>
+        }
+      />
     </Card>
   );
 };

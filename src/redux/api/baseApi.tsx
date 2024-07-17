@@ -1,6 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { IProductState } from "../features/products/productsSlice";
-import { IProducts } from "@/pages/products/Products";
+
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: fetchBaseQuery({
@@ -17,7 +17,7 @@ export const baseApi = createApi({
       query: (id) => `/products/${id}`,
     }),
     addProduct: build.mutation({
-      query(data: IProducts) {
+      query(data: any) {
         console.log(data);
         return {
           url: `/products/create-product`,
@@ -28,15 +28,19 @@ export const baseApi = createApi({
       invalidatesTags: ["product"],
     }),
     updateProduct: build.mutation({
-      // note: an optional `queryFn` may be used in place of `query`
-      // query: ({ id, ...data }) => ({
-      //   url: `/products/${id}`,
-      //   method: "PATCH",
-      //   body: data,
-      // }),
       query({ id, data }) {
         console.log("id", id);
         console.log("data", data);
+        return {
+          url: `/products/${id}`,
+          method: "PATCH",
+          body: data,
+        };
+      },
+      invalidatesTags: ["product"],
+    }),
+    updateProductQuantity: build.mutation({
+      query({ id, data }) {
         return {
           url: `/products/${id}`,
           method: "PATCH",
@@ -56,28 +60,27 @@ export const baseApi = createApi({
       invalidatesTags: ["product"],
     }),
 
-    createUserCart: build.mutation({
-      query: (data) => ({
-        url: "/carts/create-cart",
-        method: "POST",
-        body: data,
-      }),
-    }),
+    //   createUserCart: build.mutation({
+    //     query: (data) => ({
+    //       url: "/carts/create-cart",
+    //       method: "POST",
+    //       body: data,
+    //     }),
+    //   }),
 
-    getUserCart: build.query({
-      providesTags: ["cart"],
-      query: () => `/carts`,
-    }),
+    //   getUserCart: build.query({
+    //     providesTags: ["cart"],
+    //     query: () => `/carts`,
+    //   }),
   }),
 });
 export const {
   useGetProductsQuery,
   useGetSingleProductQuery,
-  useGetUserCartQuery,
-  useCreateUserCartMutation,
+  // useGetUserCartQuery,
+  // useCreateUserCartMutation,
   useAddProductMutation,
   useRemoveProductMutation,
   useUpdateProductMutation,
+  useUpdateProductQuantityMutation,
 } = baseApi;
-
-export const selectKeyboards = (state) => state.api?.queries?.getProducts;
